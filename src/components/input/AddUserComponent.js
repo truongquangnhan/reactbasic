@@ -1,21 +1,13 @@
 import React from "react";
 import User from "../user/User";
-import {PrintFriends, PrintFriend} from "../user/FriendComponent";
 
-class UserComponent extends React.Component {
-    //
-    // // eslint-disable-next-line no-useless-constructor
-    // constructor(props) {
-    //     super(props);
-    //
-    // }
-
+class AddUserComponent extends React.Component {
     state = {
         name: "",
         description: "",
         old: "99",
         corporation: "",
-        friends: [{
+        userList: [{
             id: 1,
             name: "Tran Dan",
             description: "Phap su",
@@ -93,13 +85,11 @@ class UserComponent extends React.Component {
                         <td colSpan={2}><input type="submit" value={"submit"} onClick={this.handleOnSubmit}/></td>
                     </tr>
                     </tbody>
-                    <User userInfo={this.state} friends={this.state.friends}/>
-                    <PrintFriends userInfo={this.state} friends={this.state.friends}/>
-                    <PrintFriend userInfo={this.state} friends={this.state.friends}/>
+                    <User userInfo={this.state} userList={this.state.userList}/>
                 </table>
             </form>
         )
     }
 }
 
-export default UserComponent;
+export default AddUserComponent;

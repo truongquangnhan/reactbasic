@@ -4,7 +4,7 @@ export const PrintFriends = (props)=>{
     let getOldText = (old) => {
         let oldText = old;
         if (old > 100) {
-            oldText = "Cụ sống khỏe vl";
+            oldText = "Cụ sống khỏe đấy";
         } else if (old < 1) {
             oldText = "Chưa đẻ.";
         }
@@ -57,7 +57,7 @@ export const PrintFriend = (props)=>{
     let getOldText = (old) => {
         let oldText = old;
         if (old > 100) {
-            oldText = "Cụ sống khỏe vl";
+            oldText = "Cụ sống khỏe đấy";
         } else if (old < 1) {
             oldText = "Chưa đẻ.";
         }

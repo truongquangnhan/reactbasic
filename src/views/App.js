@@ -1,7 +1,7 @@
 // import dummy from '../assets/images/logo/dummy.png';
 import './App.scss';
 // import Example from "./example/Example";
-import UserComponent from "../components/input/UserComponent";
+import AddUserComponent from "../components/input/AddUserComponent";
 
 /**
  * 1. Class component
@@ -16,23 +16,24 @@ import UserComponent from "../components/input/UserComponent";
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <div className="App-logo">
-                    ༼ つ ◕_◕ ༽つ
-                </div>
-                <UserComponent/>
-                {/*<img src={dummy} alt="logo"/>*/}
-                {/*<Example user="xxx" test={"yyy"}/>*/}
-                {/*<p>END</p>*/}
-                {/*<a*/}
-                {/*    className="App-link"*/}
-                {/*    href="https://reactjs.org"*/}
-                {/*    target="_blank"*/}
-                {/*    rel="noopener noreferrer"*/}
-                {/*>*/}
-                {/*    THIS TEXT*/}
-                {/*</a>*/}
-            </header>
+            {/*HEADER*/}
+            <div className="App-header">
+                {/*LOGO*/}
+                <div className="App-logo">✈</div>
+                {/*HEADER-MENU*/}
+                <div className={"header-menu"}></div>
+            </div>
+            {/*BODY*/}
+            <div className={"App-body"}>
+                {/*BODY-MENU*/}
+                <div></div>
+                {/*BODY-CONTENT*/}
+                <div><AddUserComponent/></div>
+            </div>
+            {/*FOOTER*/}
+            <div className={"App-footer"}>
+                FOOTER
+            </div>
         </div>
     );
 }
