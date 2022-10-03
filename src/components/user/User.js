@@ -2,8 +2,14 @@ import React from "react";
 
 class User extends React.Component {
     state = {
-        showData: false
+        showData: false,
+        userInfo: {
+            name: "Nhan",
+            description: "dex",
+            old: "30",
+        }
     }
+    
     getOld = (old) => {
         let oldText = old;
         if (old > 100) {
@@ -18,6 +24,9 @@ class User extends React.Component {
         this.setState({
             showData: !this.state.showData
         });
+    }
+    handleOnShowConsole = () => {
+        this.props.handleConsole(this.state.userInfo)
     }
 
     render() {
@@ -47,7 +56,7 @@ class User extends React.Component {
                 </tr>
                 </tbody>
                 {this.props.userList && this.props.userList.map((item, index) => {
-                    return (<tbody key={item.id} className={"background-dark-light"}>
+                    return (<tbody key={item.id} className={"background-dark-light"} onClick={this.handleOnShowConsole}>
                         {showData &&
                             <>
                                 <tr>

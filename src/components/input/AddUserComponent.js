@@ -45,19 +45,33 @@ class AddUserComponent extends React.Component {
             corporation: event.target.value
         })
     }
+    getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+    }
 
     handleOnSubmit = (event) => {
         // unloadPage
         event.preventDefault();
         console.log("Submited");
+        const user = {
+            id: this.getRandomInt(1000),
+            name: this.state.name,
+            description: this.state.description,
+            old: this.state.old
+        }
+
         this.setState({
             name: "",
             description: "",
             old: "",
-            corporation: ""
+            corporation: "",
+            userList: [...this.state.userList, user]
         });
     }
 
+    handleConsole = (prop) => {
+        console.log(prop);
+    }
     render() {
         return (
             <form>
@@ -85,7 +99,7 @@ class AddUserComponent extends React.Component {
                         <td colSpan={2}><input type="submit" value={"submit"} onClick={this.handleOnSubmit}/></td>
                     </tr>
                     </tbody>
-                    <User userInfo={this.state} userList={this.state.userList}/>
+                    <User handleConsole={this.handleConsole} userInfo={this.state} userList={this.state.userList}/>
                 </table>
             </form>
         )
