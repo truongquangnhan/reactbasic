@@ -1,12 +1,25 @@
 import * as React from "react";
 
 class Example extends React.Component {
-    state = {
-        name: "TOKUDA",
-        longName: "Con mọe nó"
+    // eslint-disable-next-line no-useless-constructor
+    constructor(prob) {
+        super(prob);
     }
 
-    handleOnChangeName = (event) => {
+    state = {
+        name: "TOKUDA",
+        longName: "TEXT EXAMPLE",
+        countClick: 0
+    }
+
+    handleClickRegister = () => {
+        let click = this.state.countClick + 1;
+        this.setState({
+            countClick: click
+        })
+    };
+
+    handleChange = (event) => {
         this.setState({
             name: event.target.value
         })
@@ -15,11 +28,12 @@ class Example extends React.Component {
     render() {
         return (
             <>
-                <p>INPUT NAME: </p>
-                <input value={this.state.name} type={"text"} onChange={this.handleOnChangeName}/>
+                <p>INPUT NAME[count: {this.state.countClick}]: </p>
+                <input value={this.state.name} type={"text"} onChange={this.handleChange}/>
                 <br/>
+                <input type="button" onClick={this.handleClickRegister} value="Nhấn vào đây"/>
                 <h6>Hi {this.state.name}</h6>
-                <p className="mycss-class">Hello chú em chú muốn nói: {this.state.longName}</p>
+                <p className="mycss-class">DESCRIPTION: {this.state.longName}</p>
             </>
         );
     }

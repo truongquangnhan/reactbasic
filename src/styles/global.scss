@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
+
+.text-small-5px{
+  font-size: 15px;
+}
+
+.aline-l{
+  text-align: left;
+}
+
+.table-user tr td:last-child{
+  padding-left: 5px;
+}
+
+.background-dark-light{
+  background-color: #676767;
+}
+
+.boder-table-1px-solid tr td{
+  border: 1px #a4a4a4 solid;
+}
+
