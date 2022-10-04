@@ -9,7 +9,7 @@ class User extends React.Component {
             old: "30",
         }
     }
-    
+
     getOld = (old) => {
         let oldText = old;
         if (old > 100) {
@@ -27,6 +27,13 @@ class User extends React.Component {
     }
     handleOnShowConsole = () => {
         this.props.handleConsole(this.state.userInfo)
+    }
+
+    handleOnclickDeleteUser = (id) => {
+        this.props.handleOnclickDeleteUser(id)
+    }
+    handleOnclickClone =(user) =>{
+        this.props.handleOnclickClone(user);
     }
 
     render() {
@@ -56,7 +63,7 @@ class User extends React.Component {
                 </tr>
                 </tbody>
                 {this.props.userList && this.props.userList.map((item, index) => {
-                    return (<tbody key={item.id} className={"background-dark-light"} onClick={this.handleOnShowConsole}>
+                    return (<tbody key={item.id} className={"background-dark-light"}>
                         {showData &&
                             <>
                                 <tr>
@@ -69,7 +76,9 @@ class User extends React.Component {
                                 </tr>
                                 <tr>
                                     <td>Description:</td>
-                                    <td>{item.description}</td>
+                                    <td>{item.description} <span onClick={() => this.handleOnclickDeleteUser(item.id)}
+                                                                 data-userid={item.id}>[xóa]</span> <span onClick={() => this.handleOnclickClone(item)}>[clone]</span>
+                                    </td>
                                 </tr>
                             </>}
                         </tbody>

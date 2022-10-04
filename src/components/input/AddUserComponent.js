@@ -52,7 +52,6 @@ class AddUserComponent extends React.Component {
     handleOnSubmit = (event) => {
         // unloadPage
         event.preventDefault();
-        console.log("Submited");
         const user = {
             id: this.getRandomInt(1000),
             name: this.state.name,
@@ -69,9 +68,33 @@ class AddUserComponent extends React.Component {
         });
     }
 
-    handleConsole = (prop) => {
-        console.log(prop);
+    handleOnclickDeleteUser = (id) => {
+        let userList = [...this.state.userList];
+
+        // eslint-disable-next-line array-callback-return
+        userList = userList.filter(function (item, index) {
+            if (parseInt(item.id) !== parseInt(id)) {
+                return item;
+            }
+        });
+
+        this.setState({
+            userList: userList
+        });
     }
+
+    handleOnclickClone = (user) => {
+        user = {
+            id: this.getRandomInt(1000),
+            name: user.name,
+            description: user.description,
+            old: user.old
+        }
+        this.setState({
+            userList: [...this.state.userList, user]
+        });
+    }
+
     render() {
         return (
             <form>
@@ -99,7 +122,9 @@ class AddUserComponent extends React.Component {
                         <td colSpan={2}><input type="submit" value={"submit"} onClick={this.handleOnSubmit}/></td>
                     </tr>
                     </tbody>
-                    <User handleConsole={this.handleConsole} userInfo={this.state} userList={this.state.userList}/>
+                    <User handleOnclickDeleteUser={this.handleOnclickDeleteUser}
+                          handleOnclickClone={this.handleOnclickClone}
+                          userInfo={this.state} userList={this.state.userList}/>
                 </table>
             </form>
         )
