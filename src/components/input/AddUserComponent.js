@@ -140,9 +140,6 @@ class AddUserComponent extends React.Component {
                         </td>
                     </tr>
                     </tbody>
-                    {/*<User handleOnclickDeleteUser={this.handleOnclickDeleteUser}*/}
-                    {/*      handleOnclickClone={this.handleOnclickClone}*/}
-                    {/*      userInfo={this.state} userList={this.state.userList}/>*/}
                 </table>
             </form>
         )
