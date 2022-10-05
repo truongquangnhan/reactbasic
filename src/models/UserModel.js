@@ -10,10 +10,10 @@ class UserModel {
         this.corporate = corporate;
     }
 
-    getAge = () =>{
+    getAge = () => {
         try {
             return Math.floor((Date.parse(new Date()) - Date.parse(new Date(this.birthDay))) / 86400000).toString();
-        }catch (e){
+        } catch (e) {
             return "Invalid"
         }
 
@@ -34,6 +34,23 @@ class UserModel {
             users.push(user);
         }
         return users;
+    }
+
+    setId = (id) => {
+        this.id = id;
+        return this;
+    }
+
+    static cloneUserModel = () => {
+        let user = new UserModel();
+        user.firstName = "Mey Xong";
+        user.lastName = "Clone ";
+        user.birthDay = "2022-12-12";
+        user.sex = "Male";
+        user.religion = "DaoDuc";
+        user.nationality = "Dong Lao";
+        user.corporate = "RikkeiSoft";
+        return user;
     }
 }
 

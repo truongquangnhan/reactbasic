@@ -1,7 +1,5 @@
-// import dummy from '../assets/images/logo/dummy.png';
 import './App.scss';
-// import Example from "./example/Example";
-import AddUserComponent from "../components/input/AddUserComponent";
+import ManagementUserList from "./ManagementUserList";
 
 /**
  * 1. Class component
@@ -19,7 +17,15 @@ function App() {
             {/*HEADER*/}
             <div className="App-header">
                 {/*LOGO*/}
-                <div className="App-logo">✈</div>
+                <div className="App-logo-2">🪂
+                    <div className="App-logo">
+                        <div className="App-logo">
+                            <div className="App-logo">🪂</div>
+                        </div>
+                        <div className="App-logo">🚀</div>
+                    </div>
+                    ✈
+                </div>
                 {/*HEADER-MENU*/}
                 <div className={"header-menu"}></div>
             </div>
@@ -28,7 +34,9 @@ function App() {
                 {/*BODY-MENU*/}
                 <div></div>
                 {/*BODY-CONTENT*/}
-                <div><AddUserComponent/></div>
+                <div>
+                    <ManagementUserList/>
+                </div>
             </div>
             {/*FOOTER*/}
             <div className={"App-footer"}>
