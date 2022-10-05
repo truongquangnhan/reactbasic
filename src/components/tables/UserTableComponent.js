@@ -2,6 +2,20 @@ import React from "react";
 import AddUserComponent from "../input/AddUserComponent";
 import UserFormComponent from "../user/UserFormComponent";
 
+const ShowMessage = React.memo(function ShowMessage(props) {
+    console.log("memo render message");
+    if (props.message.length !== 0) {
+        return (
+            <tfoot>
+            <tr>
+                <td colSpan={8}>Message: {props.message}</td>
+            </tr>
+            </tfoot>
+        );
+    }
+    return (<></>);
+})
+
 class UserTableComponent extends React.Component {
 
     state = {
@@ -18,7 +32,6 @@ class UserTableComponent extends React.Component {
     };
 
     handleOnClickShowFormDetail = (id) => {
-        console.log("callback01");
         this.setState({
             showDetailFormFlg: !this.state.showDetailFormFlg,
             selectUserId: id
@@ -40,7 +53,8 @@ class UserTableComponent extends React.Component {
             return item;
         });
         this.setState({
-            userList: currentList
+            userList: currentList,
+            message: "User has updated."
         })
     }
 
@@ -54,16 +68,9 @@ class UserTableComponent extends React.Component {
         });
 
         this.setState({
-            userList: currentList
+            userList: currentList,
+            message: "User has deleted."
         })
-    }
-
-    componentDidMount() {
-        console.log("-----componentDidMount");
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("-----componentDidUpdate");
     }
 
     render() {
@@ -73,7 +80,7 @@ class UserTableComponent extends React.Component {
         if (!userList) {
             return <span className={"aline-c"}>No data</span>
         }
-
+        console.log("render");
         return (
             <>{showFlg &&
                 <>
@@ -97,7 +104,7 @@ class UserTableComponent extends React.Component {
                         <tbody>
                         {userList.map((user, index) => {
                             return (
-                                <tr key={user.id} >
+                                <tr key={user.id}>
                                     <td>{user.id}</td>
                                     <td><span
                                         onClick={() => this.handleOnClickShowFormDetail(user.id)}>{user.firstName} {user.lastName}</span>
@@ -115,11 +122,7 @@ class UserTableComponent extends React.Component {
                             );
                         })}
                         </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colSpan={8}>Message: Tà đạo</td>
-                        </tr>
-                        </tfoot>
+                        <ShowMessage message={this.state.message}/>
                     </table>
                     {this.state.showAddFormFlg &&
                         <AddUserComponent title={"Add new user"}

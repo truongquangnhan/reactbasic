@@ -76,7 +76,6 @@ class UserFormComponent extends React.Component {
     };
 
     render() {
-        console.log("callback02");
         return (
             <form className={"form-user-add"}>
                 <table className={"text-small-5px aline-l"}>
