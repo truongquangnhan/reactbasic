@@ -70,10 +70,6 @@ class AddUserComponent extends React.Component {
         this.handleOnClickHideForm()
     }
 
-    componentWillUnmount() {
-        console.log("-----componentWillUnmount");
-    }
-
     handleCloneUserModelData = (event) => {
         event.preventDefault();
         this.setState({

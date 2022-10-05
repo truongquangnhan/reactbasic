@@ -80,7 +80,7 @@ class UserTableComponent extends React.Component {
         if (!userList) {
             return <span className={"aline-c"}>No data</span>
         }
-        console.log("render");
+        
         return (
             <>{showFlg &&
                 <>
