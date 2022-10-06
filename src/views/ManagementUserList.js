@@ -1,5 +1,5 @@
 import React from "react";
-import UserTableComponent from "../components/tables/UserTableComponent";
+import UserTableComponent from "../components/class-component/tables/UserTableComponent";
 import UserModel from "../models/UserModel";
 
 class ManagementUserList extends React.Component {
@@ -8,9 +8,9 @@ class ManagementUserList extends React.Component {
         let userList = new UserModel().cloneUser(10,0);
         return (
             <>
-            <div className={"management-user"}>
-                <UserTableComponent userList={userList} showFlg={true} caption={"Management user"}/>
-            </div>
+                <div className={"management-user"}>
+                    <UserTableComponent userList={userList} showFlg={true} caption={"Management user"}/>
+                </div>
 
             </>
         )

@@ -1,9 +1,9 @@
 import React from "react";
-import UserModel from "../../models/UserModel";
+import UserModel from "../../../models/UserModel";
 
-class UserFormComponent extends React.Component {
+class AddUserComponent extends React.Component {
     state = {
-        userModel: this.props.userModel[0],
+        userModel: new UserModel("", "", "", "", "", "", "", ""),
         currentUserModel: new UserModel(),
         isSelectUserFlg: false,
         showFlg: false,
@@ -31,48 +31,58 @@ class UserFormComponent extends React.Component {
 
     handleOnChangeUserModel = (event) => {
         let userModelCurrent = this.state.userModel;
-        if (event) {
-            if (event.target.name === "firstName") {
-                userModelCurrent.firstName = event.target.value;
-            } else if (event.target.name === "lastName") {
-                userModelCurrent.lastName = event.target.value;
-            } else if (event.target.name === "birthDay") {
-                userModelCurrent.birthDay = event.target.value;
-            } else if (event.target.name === "sex") {
-                userModelCurrent.sex = event.target.value;
-            } else if (event.target.name === "religion") {
-                userModelCurrent.religion = event.target.value;
-            } else if (event.target.name === "nationality") {
-                userModelCurrent.nationality = event.target.value;
-            } else if (event.target.name === "corporate") {
-                userModelCurrent.corporate = event.target.value;
-            }
+        if (event.target.name === "firstName") {
+            userModelCurrent.firstName = event.target.value;
+        } else if (event.target.name === "lastName") {
+            userModelCurrent.lastName = event.target.value;
+        } else if (event.target.name === "birthDay") {
+            userModelCurrent.birthDay = event.target.value;
+        } else if (event.target.name === "sex") {
+            userModelCurrent.sex = event.target.value;
+        } else if (event.target.name === "religion") {
+            userModelCurrent.religion = event.target.value;
+        } else if (event.target.name === "nationality") {
+            userModelCurrent.nationality = event.target.value;
+        } else if (event.target.name === "corporate") {
+            userModelCurrent.corporate = event.target.value;
         }
         this.setState({
             userModel: userModelCurrent
         })
     }
 
+    getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+    }
+
     handleOnSubmit = (event) => {
         // unloadPage
         event.preventDefault();
-        const user = this.state.userModel;
-        this.props.handleOnClickUpdateUserModel(user);
+        let user = this.state.userModel;
+        user = user.setId(this.getRandomInt(1000));
+        this.props.handleOnClickAddUserModel(user);
         this.setState({
             name: "",
             description: "",
             old: "",
-            corporation: ""
+            corporation: "",
         });
         this.handleOnClickHideForm()
     }
+
+    handleCloneUserModelData = (event) => {
+        event.preventDefault();
+        this.setState({
+            userModel: {...UserModel.cloneUserModel()}
+        })
+    };
 
     handleOnClickHideForm = (event) => {
         if (event) {
             event.preventDefault();
         }
 
-        this.props.handleOnClickShowFormDetail()
+        this.props.handleOnClickShowForm()
     };
 
     render() {
@@ -83,12 +93,8 @@ class UserFormComponent extends React.Component {
                     <tbody className={"boder-table-1px-solid"}>
                     <tr>
                         <td>First Name:</td>
-                        <td><>
-
-                            <input type="text" name={"firstName"} value={this.state.userModel.firstName}
-                                   onChange={this.handleOnChangeUserModel}/>
-                        </>
-                        </td>
+                        <td><input type="text" name={"firstName"} value={this.state.userModel.firstName}
+                                   onChange={this.handleOnChangeUserModel}/></td>
                     </tr>
                     <tr>
                         <td>Last Name:</td>
@@ -102,8 +108,10 @@ class UserFormComponent extends React.Component {
                     </tr>
                     <tr>
                         <td>Sex:</td>
-                        <td><input type="text" name={"sex"} value={this.state.userModel.sex}
-                                   onChange={this.handleOnChangeUserModel}/></td>
+                        <td>
+                            <input type="text" name={"sex"} value={this.state.userModel.sex}
+                                   onChange={this.handleOnChangeUserModel}/>
+                        </td>
                     </tr>
                     <tr>
                         <td>Religion:</td>
@@ -126,6 +134,9 @@ class UserFormComponent extends React.Component {
                                    onClick={this.handleOnClickHideForm}/>
                             <input type="submit" className={"btn btn-default-right"} value={"Submit"}
                                    onClick={this.handleOnSubmit}/>
+                            <input type="submit" className={"btn btn-default-right"} value={"Clone data"}
+                                   onClick={this.handleCloneUserModelData}/>
+
                         </td>
                     </tr>
                     </tbody>
@@ -135,4 +146,4 @@ class UserFormComponent extends React.Component {
     }
 }
 
-export default UserFormComponent;
+export default AddUserComponent;

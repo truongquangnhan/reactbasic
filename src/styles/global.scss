@@ -53,7 +53,10 @@ code {
 
 .header-menu {
   width: 100%;
-  background-color: #858585;
+  max-height: 50px;
+  align-content: center;
+  align-items: center;
+  background-color: #3d3d3d;
 }
 
 .boder-table-1px-solid tr td {
@@ -120,4 +123,30 @@ code {
   font-size: calc(3px + 1vmin);
   padding: 4px;
   margin-bottom: 1px;
+}
+.nav table{
+  width: 50%;
+  margin-left: 25%;
+}
+.nav table tr{
+  width: 50vh;
+}
+.nav table tr th{
+  width: 100vh;
+  font-size: 2vh;
+  background-color: #333333;
+  margin-right: 10px;
+  margin-left: 100px;
+  padding: 10px;
+
+}
+.nav table tr th a{
+  color: #fff;
+  text-decoration: #61dafb;
+}
+.nav table tr th:hover{
+  background-color: #797979;
+}
+.active-nav {
+  color: #bd4646;
 }
