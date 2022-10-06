@@ -6,27 +6,7 @@ class AddUserComponent extends React.Component {
         userModel: new UserModel("", "", "", "", "", "", "", ""),
         currentUserModel: new UserModel(),
         isSelectUserFlg: false,
-        showFlg: false,
-        name: "",
-        description: "",
-        old: "99",
-        corporation: "",
-        userList: [{
-            id: 1,
-            name: "Tran Dan",
-            description: "Phap su",
-            old: "99"
-        }, {
-            id: 2,
-            name: "Mikami",
-            description: "Javanese",
-            old: "99"
-        }, {
-            id: 3,
-            name: "Tokuda",
-            description: "Text",
-            old: "99"
-        }]
+        showFlg: false
     }
 
     handleOnChangeUserModel = (event) => {

@@ -7,7 +7,8 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import {Home, Page2, Page3, Page4} from "./Home";
+import {Home, Page3, Page4} from "./Home";
+import {ManagementUserListFn} from "../components/function-component/ManagementUserListFn";
 
 function App() {
     return (
@@ -39,8 +40,8 @@ function App() {
                         <Route path="/users">
                             <ManagementUserList/>
                         </Route>
-                        <Route path="/page2">
-                            <Page2/>
+                        <Route path="/function-component">
+                            <ManagementUserListFn/>
                         </Route>
                         <Route path="/page3">
                             <Page3/>

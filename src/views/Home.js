@@ -8,6 +8,7 @@ export const Home = () => {
     </>);
 }
 export const Page2 = () => {
+
     return (<>
         <div className={"management-user"}>
             THIS HOME PAGE2
