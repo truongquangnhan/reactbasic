@@ -133,7 +133,7 @@ code {
 }
 .nav table tr th{
   width: 100vh;
-  font-size: 2vh;
+  font-size: calc(5px + 1vmin);
   background-color: #333333;
   margin-right: 10px;
   margin-left: 100px;

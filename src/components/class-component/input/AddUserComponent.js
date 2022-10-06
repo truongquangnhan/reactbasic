@@ -30,7 +30,7 @@ class AddUserComponent extends React.Component {
     }
 
     handleOnChangeUserModel = (event) => {
-        let userModelCurrent = this.state.userModel;
+        let userModelCurrent = {...this.state.userModel};
         if (event.target.name === "firstName") {
             userModelCurrent.firstName = event.target.value;
         } else if (event.target.name === "lastName") {
@@ -48,7 +48,7 @@ class AddUserComponent extends React.Component {
         }
         this.setState({
             userModel: userModelCurrent
-        })
+        });
     }
 
     getRandomInt = (max) => {
@@ -58,9 +58,18 @@ class AddUserComponent extends React.Component {
     handleOnSubmit = (event) => {
         // unloadPage
         event.preventDefault();
-        let user = this.state.userModel;
-        user = user.setId(this.getRandomInt(1000));
+        let currentUser = {...this.state.userModel};
+        let user = new UserModel(
+            this.getRandomInt(1000),
+            currentUser.firstName,
+            currentUser.lastName,
+            currentUser.birthDay,
+            currentUser.sex,
+            currentUser.religion,
+            currentUser.nationality,
+            currentUser.corporate)
         this.props.handleOnClickAddUserModel(user);
+
         this.setState({
             name: "",
             description: "",

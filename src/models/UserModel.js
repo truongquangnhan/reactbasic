@@ -38,6 +38,7 @@ class UserModel {
 
     setId = (id) => {
         this.id = id;
+        console.log(this)
         return this;
     }
 
